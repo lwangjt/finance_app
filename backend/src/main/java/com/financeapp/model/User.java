@@ -46,8 +46,9 @@ public class User implements UserDetails {
     @ManyToMany(mappedBy = "members", fetch = FetchType.LAZY)
     private Set<Group> groups = new HashSet<>();
     
-    @ElementCollection(enumType = EnumType.STRING)
+    @ElementCollection
     @CollectionTable(name = "user_categories", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
     @Column(name = "category")
     private Set<SpendingCategory> preferredCategories = new HashSet<>();
     
